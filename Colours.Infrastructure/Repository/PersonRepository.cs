@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Colours.Domain.Model;
@@ -107,7 +108,15 @@ namespace Colours.Infrastructure
                 )
                 .Distinct();
 
-                return data.First();
+                try
+                {
+                    return data.First();
+                }
+                catch (InvalidOperationException e)
+                {
+                    //return new Person();
+                    return null;
+                }
 
             }
         }

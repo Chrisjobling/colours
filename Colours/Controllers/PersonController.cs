@@ -35,7 +35,11 @@ namespace Colours.Controllers
         public ActionResult<Person> FindById(int id)
         {
             Person person = personRepo.FindById(id);
-           
+
+            if (person == null)
+            {
+                return NotFound();
+            }
             return this.Ok(person);
         }
 
