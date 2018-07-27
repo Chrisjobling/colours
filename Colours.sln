@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colours", "Colours\Colours.csproj", "{89CF16A8-B02F-4489-9D8C-8693CB0398AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colours.Domain", "Colours.Domain\Colours.Domain.csproj", "{3A667109-E0A5-4AD0-89C7-8FBBB72E4FCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colours.Domain", "Colours.Domain\Colours.Domain.csproj", "{3A667109-E0A5-4AD0-89C7-8FBBB72E4FCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colours.Infrastructure", "Colours.Infrastructure\Colours.Infrastructure.csproj", "{873ABF57-B673-4DF8-9807-1B17B51B0C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colours.Infrastructure", "Colours.Infrastructure\Colours.Infrastructure.csproj", "{873ABF57-B673-4DF8-9807-1B17B51B0C19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

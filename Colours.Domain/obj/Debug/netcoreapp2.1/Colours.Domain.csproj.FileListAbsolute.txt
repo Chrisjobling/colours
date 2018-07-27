@@ -12,11 +12,8 @@ C:\Users\Joblingc\source\repos\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Co
 C:\dev\Colours\Colours.Domain\bin\Debug\netcoreapp2.1\Colours.Domain.deps.json
 C:\dev\Colours\Colours.Domain\bin\Debug\netcoreapp2.1\Colours.Domain.dll
 C:\dev\Colours\Colours.Domain\bin\Debug\netcoreapp2.1\Colours.Domain.pdb
-C:\dev\Colours\Colours.Domain\bin\Debug\netcoreapp2.1\System.Data.SqlClient.dll
-C:\dev\Colours\Colours.Domain\bin\Debug\netcoreapp2.1\System.Data.SqlClient.xml
 C:\dev\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Colours.Domain.csproj.CoreCompileInputs.cache
 C:\dev\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Colours.Domain.AssemblyInfoInputs.cache
 C:\dev\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Colours.Domain.AssemblyInfo.cs
-C:\dev\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Colours.Domain.csproj.CopyComplete
 C:\dev\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Colours.Domain.dll
 C:\dev\Colours\Colours.Domain\obj\Debug\netcoreapp2.1\Colours.Domain.pdb

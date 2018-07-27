@@ -479,6 +479,9 @@
       "Colours.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Dapper": "1.50.5"
+        },
         "compile": {
           "bin/placeholder/Colours.Domain.dll": {}
         },

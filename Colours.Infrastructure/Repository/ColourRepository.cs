@@ -10,10 +10,11 @@ namespace Colours.Infrastructure.Repository
 {
     public class ColourRepository : IColourRepository
     {
+        DbFactory dbFactory = new DbFactory();
         public IEnumerable<Colour> GetColours()
         {
             string sql = @"SELECT [ColourId] as id,[Name],[IsEnabled] FROM Colours";
-            using (SqlConnection connection = new SqlConnection("Data Source=ANS-A424\\SQLEXPRESS;Initial Catalog=TechTest;Integrated Security=True"))
+            using (SqlConnection connection = dbFactory.SqlServeConnection())
             {
                 var allColours = connection.Query<Colour>(sql); ;
 

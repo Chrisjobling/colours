@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Colours.Domain.Model;
 using Colours.Domain.Repository;
+using Colours.Infrastructure.Repository;
 using Colours.Models;
 using Dapper;
 
@@ -11,10 +12,12 @@ namespace Colours.Infrastructure
 {
     public class PersonRepository : IPersonRepository
     {
+        DbFactory dbFactory = new DbFactory();
         public IEnumerable<Person> GetPeople()
         {
             var lookup = new Dictionary<int, Person>();
-            using (SqlConnection connection = new SqlConnection("Data Source=ANS-A424\\SQLEXPRESS;Initial Catalog=TechTest;Integrated Security=True"))
+            
+            using (SqlConnection connection = dbFactory.SqlServeConnection())
             {
                 var sql = @"
                 SELECT 
@@ -65,7 +68,7 @@ namespace Colours.Infrastructure
         public Person FindById(int id)
         {
             var lookup = new Dictionary<int, Person>();
-            using (SqlConnection connection = new SqlConnection("Data Source=ANS-A424\\SQLEXPRESS;Initial Catalog=TechTest;Integrated Security=True"))
+            using (SqlConnection connection = dbFactory.SqlServeConnection())
             {
                 string sql = @"
          SELECT 
@@ -90,6 +93,7 @@ namespace Colours.Infrastructure
                     sql,
                     (p, c) =>
                 {
+                    
                     // Person ID already exists - grab and append
                     if (!lookup.TryGetValue(p.Id, out person))
                     {
@@ -113,8 +117,7 @@ namespace Colours.Infrastructure
                     return data.First();
                 }
                 catch (InvalidOperationException e)
-                {
-                    //return new Person();
+                { 
                     return null;
                 }
 
@@ -125,7 +128,7 @@ namespace Colours.Infrastructure
         {
 
 
-            using (SqlConnection connection = new SqlConnection("Data Source=ANS-A424\\SQLEXPRESS;Initial Catalog=TechTest;Integrated Security=True"))
+            using (SqlConnection connection = dbFactory.SqlServeConnection())
             {
                 string updateQuery = @"
                 UPDATE [dbo].[People] SET 
@@ -142,6 +145,7 @@ namespace Colours.Infrastructure
                 });
             }
         }
+      
     }
 }
 
