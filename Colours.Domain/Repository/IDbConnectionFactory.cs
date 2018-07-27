@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
+﻿using System.Data;
 
 namespace Colours.Domain.Repository
 {
-   public interface IDbConnectionFactory
+    public interface IDbConnectionFactory
     {
-        SqlConnection SqlServeConnection();
+        IDbConnection SqlServeConnection();
     }
 }

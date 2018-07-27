@@ -1,13 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using System.Data.SqlClient;
-using Microsoft.IdentityModel.Protocols;
-using Dapper;
 using Colours.Models;
-using Colours.Infrastructure;
 using Colours.Domain.Repository;
+using Colours.Domain.Model;
 
 namespace Colours.Controllers
 {
@@ -29,5 +24,22 @@ namespace Colours.Controllers
             return this.Ok(colours);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, Colour colour)
+        {
+            Colour oldColour = colourRepo.FindById(id);
+            if (oldColour == null)
+            {
+                return NotFound("Colour Not Found");
+            }
+            
+            oldColour.IsEnabled = colour.IsEnabled;
+            colourRepo.Update(oldColour);
+            
+            return NoContent();
+        }
+
     }
+       
+
 }

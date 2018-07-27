@@ -1,14 +1,10 @@
 ﻿using Colours.Domain.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Colours.Models
 {
     public class Person
     {
-       public Person() { }
         public Person(int id, string firstName, string lastName, bool isAuthorised, bool isValid, bool isEnabled)
         {
             Id = id;

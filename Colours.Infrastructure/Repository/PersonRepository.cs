@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using Colours.Domain.Model;
 using Colours.Domain.Repository;
-using Colours.Infrastructure.Repository;
 using Colours.Models;
 using Dapper;
 
 namespace Colours.Infrastructure
 {
     public class PersonRepository : IPersonRepository
-    {
-        DbFactory dbFactory = new DbFactory();
+ {
+
+        IDbConnectionFactory dbFactory;
+
+        public PersonRepository(IDbConnectionFactory dbFactory)
+        {
+            this.dbFactory = dbFactory;
+        }
+
         public IEnumerable<Person> GetPeople()
         {
             var lookup = new Dictionary<int, Person>();
-            
-            using (SqlConnection connection = dbFactory.SqlServeConnection())
+
+            using (var connection = dbFactory.SqlServeConnection())
             {
                 var sql = @"
                 SELECT 
@@ -37,13 +42,12 @@ namespace Colours.Infrastructure
                     ON ( fc.ColourId = c.ColourId )
                 ";
 
-                Person person;
                 var data = connection.Query<Person, Colour, Person>(
                     sql,
                     (p, c) =>
                 {
                     // Person ID already exists - grab and append
-                    if (!lookup.TryGetValue(p.Id, out person))
+                    if (!lookup.TryGetValue(p.Id, out Person person))
                     {
                         lookup.Add(p.Id, person = p);
                     }
@@ -68,7 +72,7 @@ namespace Colours.Infrastructure
         public Person FindById(int id)
         {
             var lookup = new Dictionary<int, Person>();
-            using (SqlConnection connection = dbFactory.SqlServeConnection())
+            using (var connection = dbFactory.SqlServeConnection())
             {
                 string sql = @"
          SELECT 
@@ -88,14 +92,13 @@ namespace Colours.Infrastructure
                     ON ( fc.ColourId = c.ColourId )
                 WHERE a.[PersonId] =" + id + "";
 
-                Person person;
                 var data = connection.Query<Person, Colour, Person>(
                     sql,
                     (p, c) =>
                 {
-                    
+
                     // Person ID already exists - grab and append
-                    if (!lookup.TryGetValue(p.Id, out person))
+                    if (!lookup.TryGetValue(p.Id, out Person person))
                     {
                         lookup.Add(p.Id, person = p);
                     }
@@ -124,11 +127,9 @@ namespace Colours.Infrastructure
             }
         }
 
-        public void Update(Person person)
+        public void UpdatePerson(Person person)
         {
-
-
-            using (SqlConnection connection = dbFactory.SqlServeConnection())
+            using (var connection = dbFactory.SqlServeConnection())
             {
                 string updateQuery = @"
                 UPDATE [dbo].[People] SET 
@@ -141,13 +142,40 @@ namespace Colours.Infrastructure
                     person.IsValid,
                     person.IsAuthorised,
                     person.Id
-
                 });
             }
         }
-      
+
+        public void UpdateFavoriteColour(int id, int colourId)
+        {
+            using (var connection = dbFactory.SqlServeConnection())
+            {
+                string updateQuery = @"
+                INSERT INTO [TechTest].[dbo].[FavouriteColours] (PersonId, ColourId) VALUES(@Id, @ColourId)";  
+                var result = connection.Execute(updateQuery, new
+                {
+                    colourId,
+                    id
+                });
+            }
+        }
+
+        public void DeleteCurrentData(Person person)
+        {
+            using (var connection = dbFactory.SqlServeConnection())
+            {
+                string updateQuery = @"
+                DELETE FROM [dbo].[FavouriteColours] 
+                WHERE PersonId = @Id";
+                var result = connection.Execute(updateQuery, new
+                {
+                    person.Id
+                });
+            }
+        }
     }
 }
+
 
 
 

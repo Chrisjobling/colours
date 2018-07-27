@@ -1,4 +1,5 @@
-﻿using Colours.Models;
+﻿using Colours.Domain.Model;
+using Colours.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Colours.Domain.Repository
       
        IEnumerable<Person> GetPeople();
        Person FindById(int id);
-        void Update(Person person);
+        void UpdatePerson(Person person);
+        void UpdateFavoriteColour(int id, int colourId);
+        void DeleteCurrentData(Person person);
     }
 }

@@ -14,7 +14,11 @@ C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Colours.Infrastruc
 C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Colours.Infrastructure.dll
 C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Colours.Infrastructure.pdb
 C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Colours.Domain.dll
+C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Microsoft.IdentityModel.Protocols.dll
 C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Colours.Domain.pdb
+C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\dev\Colours\Colours.Infrastructure\bin\Debug\netcoreapp2.1\Microsoft.IdentityModel.Protocols.xml
 C:\dev\Colours\Colours.Infrastructure\obj\Debug\netcoreapp2.1\Colours.Infrastructure.csprojAssemblyReference.cache
 C:\dev\Colours\Colours.Infrastructure\obj\Debug\netcoreapp2.1\Colours.Infrastructure.csproj.CoreCompileInputs.cache
 C:\dev\Colours\Colours.Infrastructure\obj\Debug\netcoreapp2.1\Colours.Infrastructure.AssemblyInfoInputs.cache

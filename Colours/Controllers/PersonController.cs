@@ -1,14 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using System.Data.SqlClient;
-using Microsoft.IdentityModel.Protocols;
-using Dapper;
 using Colours.Models;
-using Colours.Infrastructure;
 using Colours.Domain.Repository;
-using Colours.Domain.Model;
 
 namespace Colours.Controllers
 {
@@ -38,7 +31,7 @@ namespace Colours.Controllers
 
             if (person == null)
             {
-                return NotFound();
+                return NotFound("Person Does Not Exist");
             }
             return this.Ok(person);
         }
@@ -50,14 +43,21 @@ namespace Colours.Controllers
             Person oldPerson = personRepo.FindById(id);
             if (oldPerson == null)
             {
-                return NotFound();
+                return NotFound("Person Does Not Exist");
             }
 
             person.IsAuthorised = person.IsAuthorised;
             person.IsEnabled = person.IsEnabled;
             person.IsValid = person.IsValid;
 
-            personRepo.Update(person);
+            personRepo.UpdatePerson(person);
+
+            var colours = person.FaveColours;
+            personRepo.DeleteCurrentData(person);
+            foreach (var p in colours)
+            {
+                personRepo.UpdateFavoriteColour(id, p.ColourId);
+            }
           
             return NoContent();
         }

@@ -2,7 +2,6 @@
 {
     public class Colour
     {
-        public Colour() { }
         public Colour(int colourId, string name, bool isEnabled)
         {
             ColourId = colourId;

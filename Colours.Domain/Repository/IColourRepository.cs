@@ -8,6 +8,7 @@ namespace Colours.Domain.Repository
     public interface IColourRepository
     {
         IEnumerable<Colour> GetColours();
-        IEnumerable<Colour> FaveColours();
+        void Update(Colour colour);
+        Colour FindById(int id);
     }
 }

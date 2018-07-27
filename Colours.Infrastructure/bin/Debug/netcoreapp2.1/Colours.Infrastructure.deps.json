@@ -9,7 +9,9 @@
       "Colours.Infrastructure/1.0.0": {
         "dependencies": {
           "Colours.Domain": "1.0.0",
-          "Dapper": "1.50.5"
+          "Dapper": "1.50.5",
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.1.0",
+          "Microsoft.IdentityModel.Protocols": "5.2.0.0"
         },
         "runtime": {
           "Colours.Infrastructure.dll": {}
@@ -202,6 +204,22 @@
         "runtime": {
           "Colours.Domain.dll": {}
         }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/2.1.1.0": {
+        "runtime": {
+          "Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.18157"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Protocols/5.2.0.0": {
+        "runtime": {
+          "Microsoft.IdentityModel.Protocols.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.0.50129"
+          }
+        }
       }
     }
   },
@@ -346,6 +364,16 @@
     },
     "Colours.Domain/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/2.1.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.IdentityModel.Protocols/5.2.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
